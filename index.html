@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>That Mesh E</title>
+  <link rel="icon" type="image/png" href="fvicon.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="shell">
+    <!-- Top Neumorphic Header -->
+    <header class="neu-panel topbar">
+      <div class="brand">
+        <div class="logo-well">
+          <img src="fvicon.png" alt="" class="logo" onerror="this.style.display='none'" />
+        </div>
+        <h1>That Mesh E</h1>
+      </div>
+
+      <div class="mode-switch" id="mode-switch">
+        <div class="neu-pill active" data-mode="fusion" role="button" tabindex="0">Dual Fusion</div>
+        <div class="neu-pill" data-mode="sonar" role="button" tabindex="0">Wi-Fi Sonar</div>
+        <div class="neu-pill" data-mode="acoustic" role="button" tabindex="0">Acoustic Cam</div>
+      </div>
+
+      <div class="header-right">
+        <div class="neu-inset status-chip">
+          <span class="led" id="sync-led"></span>
+          <span id="sync-label">Syncing</span>
+        </div>
+
+        <div class="neu-pill icon-pill" id="theme-toggle" role="button" tabindex="0" title="Switch Theme">
+          <span id="theme-icon">☀</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Live Telemetry Strip -->
+    <section class="metrics-strip">
+      <div class="neu-panel metric">
+        <span class="m-label">Active Mesh Nodes</span>
+        <div class="m-val" id="m-nodes">0</div>
+      </div>
+
+      <div class="neu-panel metric">
+        <span class="m-label">RF Field State</span>
+        <div class="m-val accent-rf" id="m-rf">CALM</div>
+      </div>
+
+      <div class="neu-panel metric">
+        <span class="m-label">Acoustic Peak</span>
+        <div class="m-val accent-ac" id="m-audio">-60 <small>dB</small></div>
+      </div>
+
+      <div class="neu-panel metric">
+        <span class="m-label">Triangulated Zone</span>
+        <div class="m-val" id="m-zone">—</div>
+      </div>
+    </section>
+
+    <!-- Spatial Radar & Acoustic Camera Viewport -->
+    <section class="workspace-grid">
+      <div class="neu-panel radar-card">
+        <div class="radar-toolbar">
+          <div class="toolbar-hint">Drag laptop nodes to match physical room positions</div>
+
+          <div class="toolbar-actions">
+            <div class="neu-pill sm" id="btn-voice-zoom" role="button" tabindex="0">
+              Voice Zoom: OFF
+            </div>
+            <div class="neu-pill sm" id="btn-chime" role="button" tabindex="0">
+              Alert Tone: OFF
+            </div>
+            <div class="neu-pill sm" id="btn-auto-layout" role="button" tabindex="0">
+              Auto Arrange
+            </div>
+          </div>
+        </div>
+
+        <div class="neu-inset canvas-well" id="canvas-well">
+          <canvas id="mesh-canvas"></canvas>
+        </div>
+
+        <div class="legend-bar">
+          <span><i class="swatch rf"></i> Wi-Fi Through-Wall Perturbation</span>
+          <span><i class="swatch ac"></i> Acoustic Energy & TDOA Localization</span>
+          <span><i class="swatch focus"></i> Beamform Focus Puck (Drag to Isolate Voice)</span>
+        </div>
+      </div>
+
+      <!-- Side Telemetry & Live Waveforms -->
+      <aside class="side-col">
+        <div class="neu-panel wave-card">
+          <div class="card-title">Live RF & Acoustic Oscilloscope</div>
+          <div class="neu-inset scope-well">
+            <canvas id="scope-canvas"></canvas>
+          </div>
+        </div>
+
+        <div class="neu-panel events-card">
+          <div class="card-title">Spatial Detection Feed</div>
+          <div class="neu-inset events-well" id="event-feed"></div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Connected Laptops Grid -->
+    <section class="nodes-grid" id="nodes-grid"></section>
+
+    <footer class="footer">© 2026 Sanchar Koirala | All rights reserved</footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
